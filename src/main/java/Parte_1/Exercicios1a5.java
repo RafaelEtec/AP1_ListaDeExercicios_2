@@ -55,12 +55,22 @@ public class Exercicios1a5 {
         double num1 = ent.nextDouble();
         System.out.println("Insira o Segundo Número: ");
         double num2 = ent.nextDouble();
+        double[] nums = maior2Nums(num1, num2);
+        System.out.println("O número "+nums[0]+" é maior que "+nums[1]);
+    }
+    
+    public static double[] maior2Nums(double num1, double num2) {
+        double[] nums = null;
+        nums = new double[2];
         
         if (num1 > num2) {
-            System.out.println("O número "+num1+" é maior que "+num2);
+            nums[0] = num1;
+            nums[1] = num2;
         } else {
-            System.out.println("O número "+num2+" é maior que "+num1);
+            nums[0] = num2;
+            nums[1] = num1;
         }
+        return nums;
     }
     
     public static void Exercicio2() {
@@ -70,13 +80,11 @@ public class Exercicios1a5 {
         double num1 = ent.nextDouble();
         System.out.println("Insira o Segundo Número: ");
         double num2 = ent.nextDouble();
-        
-        if (num1 == num2) {
-            System.out.println("Os números são iguais: "+num1);
-        } else if (num1 > num2) {
-            System.out.println("O número "+num1+" é maior que "+num2);
+        double[] nums = maior2Nums(num1, num2);
+        if (nums[0] == nums[1]) {
+            System.out.println("Os números são Iguais: "+nums[0]);
         } else {
-            System.out.println("O número "+num2+" é maior que "+num1);
+            System.out.println("O número "+nums[0]+" é maior que "+nums[1]);
         }
     }
     
@@ -89,25 +97,96 @@ public class Exercicios1a5 {
         double num2 = ent.nextDouble();
         System.out.println("Insira o Terceiro Número: ");
         double num3 = ent.nextDouble();
-        
-        if (num1 == num2 && num2 == num3) {
-            System.out.println("Os números possuem mesmo valor: "+num1);
-        } else if (num1 > num2) {
-            if (num1 > num3) {
-                System.out.println("O número "+num1+" é maior que "+num2+" e "+num3);
-            } else {
-                System.out.println("O número "+num3+" é maior que "+num1+" e "+num2);
-            }
-        } else if (num2 > num3) {
-            System.out.println("O número "+num2+" é maior que "+num1+" e "+num3);
+        double[] nums = maior3Nums(num1, num2, num3);
+        if (nums[0] == nums[1] && nums[1] == nums[2]) {
+            System.out.println("Os números são iguais: "+nums[0]);
+        } else {
+            System.out.println("O número "+nums[0]+" é maior que "+nums[1]+" e "+nums[2]);
         }
     }
     
+    public static double[] maior3Nums(double num1, double num2, double num3) {
+        double[] nums = null;
+        nums = new double[3];
+        
+        if (num1 > num2) {
+            if (num1 > num3) {
+                nums[0] = num1;
+                nums[1] = num2;
+                nums[2] = num3;
+            } else if (num2 > num3) {
+                nums[0] = num3;
+                nums[1] = num2;
+                nums[2] = num1;
+            } else {
+                nums[0] = num3;
+                nums[1] = num1;
+                nums[2] = num2;
+            }
+        } else if (num2 > num3) {
+            if (num1 > num3) {
+                nums[0] = num2;
+                nums[1] = num1;
+                nums[2] = num3;
+            } else {
+                nums[0] = num2;
+                nums[1] = num3;
+                nums[2] = num1;
+            }
+        } else {
+            nums[0] = num3;
+            nums[1] = num2;
+            nums[2] = num1;
+        }
+        return nums;
+    }
+    
     public static void Exercicio4() {
-            
+        Scanner ent = new Scanner(System.in);
+        
+        System.out.println("Qual a cor do farol agora?");
+        String corFarol = ent.next();
+        String retornoFarol = podeAtravessar(corFarol);
+        System.out.println(retornoFarol);
+    }
+    
+    public static String podeAtravessar(String corFarol) {
+        String retornoFarol;
+        
+        if (corFarol.toLowerCase().equals("verde")) {
+            retornoFarol = "Atravesse.";
+        } else if (corFarol.toLowerCase().equals("vermelho")) {
+            retornoFarol = "Espere!";
+        } else {
+            retornoFarol = "Farol Inoperante.";
+        }
+        return retornoFarol;
     }
     
     public static void Exercicio5() {
-            
+        Scanner ent = new Scanner(System.in);
+        
+        System.out.println("Insira seus Ganhos: ");
+        double ganhos = ent.nextDouble();
+        System.out.println("Insira seus Gastos: ");
+        double gastos = ent.nextDouble();
+        String retorno = orcamentoGastoGanho(ganhos, gastos);
+        System.out.println(retorno);
+    }
+    
+    public static String orcamentoGastoGanho (double ganhos, double gastos) {
+        String retorno;
+        double situacao = 0;
+        
+        if (ganhos == gastos) {
+            retorno = "Seus Ganhos e Gastos são iguais: "+ganhos;
+        } else if (ganhos > gastos) {
+            situacao = ganhos - gastos;
+            retorno = "Você está dentro do orçamento! +"+situacao;
+        } else {
+            situacao = gastos - ganhos;
+            retorno = "Você está fora do orçamento! Não gaste mais! -"+situacao;
+        }
+        return retorno;
     }
 }
