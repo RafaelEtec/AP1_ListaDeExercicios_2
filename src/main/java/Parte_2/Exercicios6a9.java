@@ -43,24 +43,163 @@ public class Exercicios6a9 {
     public static void Exercicio6() {
         Scanner ent = new Scanner(System.in);
         
-        System.out.println("");
+        System.out.println("Insira o número equivalente ao dia da Semana: ");
+        int dia = ent.nextInt();
+        String diaSemana = diaSemana(dia);
+        System.out.println(diaSemana);
+    }
+    
+    public static String diaSemana(int dia) {
+        String diaSemana;
+                
+        switch (dia) {
+            case 0:
+                diaSemana = "Domingo";
+                break;
+            case 1:
+                diaSemana = "Segunda-Feira";
+                break;
+            case 2:
+                diaSemana = "Terça-Feira";
+                break;
+            case 3:
+                diaSemana = "Quarta-Feira";
+                break;
+            case 4:
+                diaSemana = "Quinta-Feira";
+                break;
+            case 5:
+                diaSemana = "Sexta-Feira";
+                break;
+            case 6:
+                diaSemana = "Sábado";
+                break;
+            default:
+                diaSemana = "Dia da Semana Inválido!";
+                break;
+        }
+        return diaSemana;
     }
     
     public static void Exercicio7() {
         Scanner ent = new Scanner(System.in);
         
-        System.out.println("");
+        System.out.println("Insira o número equivalente ao mês do ano: ");
+        int numMes = ent.nextInt();
+        String mes = mes(numMes);
+        System.out.println(mes);
     }
     
+    public static String mes(int numMes) {
+        String mes;
+                
+        switch (numMes) {
+            case 1:
+                mes = "Janeiro";
+                break;
+            case 2:
+                mes = "Fevereiro";
+                break;
+            case 3:
+                mes = "Março";
+                break;
+            case 4:
+                mes = "Abril";
+                break;
+            case 5:
+                mes = "Maio";
+                break;
+            case 6:
+                mes = "Junho";
+                break;
+            case 7:
+                mes = "Julho";
+                break;
+            case 8:
+                mes = "Agosto";
+                break;
+            case 9:
+                mes = "Setembro";
+                break;
+            case 10:
+                mes = "Outubro";
+                break;
+            case 11:
+                mes = "Novembro";
+                break;
+            case 12:
+                mes = "Dezembro";
+                break;
+            default:
+                mes = "Mês do ano inválido!";
+                break;
+        }
+        return mes;
+    }
     public static void Exercicio8() {
-        Scanner ent = new Scanner(System.in);
+        Scanner ent = new Scanner(System.in);   
         
-        System.out.println("");
+        System.out.println("Insira o número equivalente ao mês do ano\nPara descobrir o semestre que habita: ");
+        int numMes = ent.nextInt();
+        String semestre = mesSemestre(numMes);
+        System.out.println(semestre);
+    }
+    
+    public static String mesSemestre(int numMes) {
+        String semestre;
+        
+        if (numMes >= 1 && numMes <= 12) {
+            if (numMes <= 6) {
+                semestre = "Primeiro semestre";
+            } else {
+                semestre = "Segundo semestre";
+            }
+        } else {
+            semestre = "Mês do ano inválido";
+        }
+        return semestre;
     }
     
     public static void Exercicio9() {
         Scanner ent = new Scanner(System.in);
         
-        System.out.println("");
+        int escolhaJogador1;
+        System.out.println("--- Par ou Ímpar ---\n\nJogador 1 - Decida se quer Par <0> ou Ímpar <1>: ");
+        escolhaJogador1 = ent.nextInt();
+        while (escolhaJogador1 != 0 && escolhaJogador1 != 1) {
+            System.out.println("Escolha Par <0> ou Ímpar <1> novamente: ");
+            escolhaJogador1 = ent.nextInt();
+        }
+        
+        System.out.println("Jogador 1 - Insira um número: ");
+        int num1 = ent.nextInt();
+        System.out.println("Jogador 2 - Insira um número: ");
+        int num2 = ent.nextInt();
+        String resultadoJogo = parOuImpar(num1, num2, escolhaJogador1);
+        System.out.println(resultadoJogo);
+    }
+    
+    public static String parOuImpar(int num1, int num2, int escolhaJogador1) {
+        int somaNums = num1 + num2;
+        int jogador = 1;
+        String resultadoJogo;
+        
+        if (escolhaJogador1 == 0) {
+            if ((somaNums % 2) == 0) {
+                resultadoJogo = ("O número "+somaNums+" é Par, Logo o Jogador "+jogador+" Vence!");
+            } else {
+                jogador = 2;
+                resultadoJogo = ("O número "+somaNums+" é Ímpar, Logo o Jogador "+jogador+" Vence!");
+            }
+        } else {
+            if ((somaNums % 2) == 0) {
+                jogador = 2;
+                resultadoJogo = ("O número "+somaNums+" é Par, Logo o Jogador "+jogador+" Vence!");
+            } else {
+                resultadoJogo = ("O número "+somaNums+" é Ímpar, Logo o Jogador "+jogador+" Vence!");
+            }
+        }
+        
+        return resultadoJogo;
     }
 }
