@@ -39,12 +39,13 @@ public class Exercicios10a12 {
                 break;
             case 12:
                 System.out.println(
-                    "Implementar uma função que represente uma calculadora.\nA função deve receber dois valores numéricos mais o tipo da operação matemática que deve realizar nos valores e retornar o resultado do cálculo.\nAs operações suportadas estão listadas abaixo.\n" +
-                    "- Soma\n" +
-                    "- Subtração\n" +
-                    "- Multiplicação\n" +
-                    "- Divisão\n" +
-                    "- Potência\n");
+                    "Implementar uma função que represente uma calculadora.\nA função deve receber dois valores numéricos mais o tipo da operação matemática que deve realizar nos valores e retornar o resultado do cálculo." +
+                    "\nAs operações suportadas estão listadas abaixo.\n" +
+                    "- <A> Soma\n" +
+                    "- <B> Subtração\n" +
+                    "- <C> Multiplicação\n" +
+                    "- <D> Divisão\n" +
+                    "- <E> Potência\n");
                 Exercicio12();
                 break;
         }
@@ -64,6 +65,7 @@ public class Exercicios10a12 {
     public static String orcamentoPorcentagem(double ganhos, double gastos) {
         double situacao = ganhos - gastos;
         String orcamento = "";
+        
         if (gastos <= (30%ganhos)) {
             orcamento = (
                       "Parabéns, está gerenciando bem seu orçamento!\n"
@@ -85,14 +87,129 @@ public class Exercicios10a12 {
                       "Orçamento comprometido! Hora de rever seus gastos!\n"
                     + "Seu prejuízo: "+situacao);
         }
+        
         return orcamento;
     }
     
     public static void Exercicio11() {
+        Scanner ent = new Scanner(System.in);
         
+        System.out.println("Será pedido à você três valores\n"
+                + "Para que seja formado um triângulo, É necessário inserir três valores positivos\n"
+                + "Insira o valor do primeiro lado: ");
+        double lado1 = ent.nextDouble();
+        System.out.println("Insira o valor do segundo lado: ");
+        double lado2 = ent.nextDouble();
+        System.out.println("Insira o valor do terceiro lado: ");
+        double lado3 = ent.nextDouble();
+        
+        System.out.println(tipoTriangulo(lado1, lado2, lado3));
+    }
+    
+    public static String tipoTriangulo(double lado1, double lado2, double lado3) {
+        String tri = "É um Triângulo ";
+        String angulo = "";
+        
+        if (lado1 <= 0 || lado2 <= 0 || lado3 <= 0) {
+            tri = "Não é um triângulo, pois um ou mais valores são negativos ou nulos!";
+        } else {
+            if (lado1 == lado2 && lado2 == lado3) {
+                angulo = "Equilátero";
+            } else if (lado1 == lado2 || lado1 == lado3 || lado2 == lado3){
+                angulo = "Isósceles";
+            } else {
+                angulo = "Escaleno";
+            }
+        }
+        
+        return tri+angulo;
     }
     
     public static void Exercicio12() {
+        Scanner ent = new Scanner(System.in);
         
+        String saida = "";
+        String saidaOperacao = "";
+        String opcoes = 
+                    "- <A> Soma\n" +
+                    "- <B> Subtração\n" +
+                    "- <C> Multiplicação\n" +
+                    "- <D> Divisão\n" +
+                    "- <E> Potência\n";
+        boolean podeSair = false;
+        
+        System.out.println("Insira o primeiro número: ");
+        double num1 = ent.nextDouble();
+        System.out.println("Insira o segundo número: ");
+        double num2 = ent.nextDouble();
+        System.out.println("Agora insira a Operação: ");
+        String operacao = ent.next();
+        
+        switch (operacao) {
+            case "a":
+                saidaOperacao = "Somando: "+num1+" + "+num2+" = ";
+                break;
+            case "b":
+                saidaOperacao = "Subtraindo: "+num1+" - "+num2+" = ";
+                break;
+            case "c":
+                saidaOperacao = "Multiplicando: "+num1+" * "+num2+" = ";
+                break;
+            case "d":
+                saidaOperacao = "Dividindo: "+num1+" / "+num2+" = ";
+                break;
+            case "e":
+                saidaOperacao = "Potenciando: "+num1+" ^ "+num2+" = ";
+                break;
+            case "s":
+                saidaOperacao =
+                        "Obrigado!" +
+                        "Saindo do programa.";
+                break;
+        } 
+        
+        do {   
+            if (operacao.toLowerCase().equals("s")) {
+                System.out.println(saidaOperacao);
+                podeSair = true;
+            } else {
+                double retorno = operacaoMat(num1, operacao, num2);
+                System.out.println(saidaOperacao+retorno);
+                podeSair = true;
+            }
+        } while (!podeSair);
+    }
+    
+    public static double operacaoMat(double num1, String operacao, double num2) {
+        double resultado = 0;
+        
+        switch (operacao.toLowerCase()) {
+            case "a":
+                resultado = num1 + num2;
+                break;
+            case "b":
+                resultado = num1 - num2;
+                break;
+            case "c":
+                resultado = num1 * num2;
+                break;
+            case "d":
+                resultado = num1 / num2;
+                break;
+            case "e":
+                resultado = 1;
+                if (num1 == 0 && num2 == 0) {
+                    resultado = 1;
+                } else if (num1 == 0 && num2 >= 1) {
+                    resultado = 0;
+                } else {
+                    for (int i = 1; i <= num2; i++) {
+                        resultado = resultado * num1;
+                    }
+                }
+                break;
+        }
+        
+        return resultado;
     }
 }
