@@ -321,5 +321,52 @@ public class Exercicios13a16 {
     public static void Exercicio16() {
         Scanner ent = new Scanner(System.in);
         
+        System.out.println("Informe o dia: ");
+        int dia = ent.nextInt();
+        System.out.println("Informe o mês: ");
+        int mes = ent.nextInt();
+        System.out.println("Informe o ano: ");
+        int ano = ent.nextInt();
+        
+        String validaData[] = validaData(dia, mes, ano);
+    }
+    
+    public static String[] validaData(int dia, int mes, int ano) {
+        String[] validaData = new String[4];
+        validaData[3] = "Data válida:";
+        boolean dataInvalida = false;
+        
+        //Rever
+        
+        if (dia >= 1 || dia <= 31) {
+            validaData[0] = "Dia válido.";
+        } else {
+            validaData[0] = "Dia inválido!";
+            dataInvalida = true;
+        }
+        
+        if (mes >= 1 || mes <= 12) {
+            if (mes == 2 && dia > 28) {
+                validaData[1] = "Mês inválido!";
+                dataInvalida = true;
+            }
+            validaData[1] = "Mês válido";
+        } else {
+            validaData[1] = "Mês inválido!";
+            dataInvalida = true;
+        }
+        
+        if (ano < 1 || ano > 9999) {
+            validaData[2] = "Ano válido";
+        } else {
+            validaData[2] = "Ano inválido";
+            dataInvalida = true;
+        }
+        
+        if (dataInvalida == true) {
+            validaData[3] = "Data inválida pois:";
+        }
+        
+        return validaData;
     }
 }
