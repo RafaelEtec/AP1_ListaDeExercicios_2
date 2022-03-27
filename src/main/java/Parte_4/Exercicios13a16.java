@@ -262,21 +262,60 @@ public class Exercicios13a16 {
     public static void Exercicio15() {
         Scanner ent = new Scanner(System.in);
         
-        System.out.println("Informe a Primeira cor primária: ");
-        String corP1 = ent.next();
-        System.out.println("Informe a Segunda cor primária: ");
-        String corP2 = ent.next();
+        String strCoresPri = 
+                  "As Cores Primárias são: \n"
+                + " - Vermelho\n"
+                + " - Amarelo\n"
+                + " - Azul\n";
         
-        String corS = corSecundaria(corP1, corP2);
-        System.out.println(corS);
+        System.out.println(strCoresPri+"Informe a Primeira cor primária: ");
+        String corPri1 = ent.next();
+        System.out.println("Informe a Segunda cor primária: ");
+        String corPri2 = ent.next();
+        
+        String corSec = corSecundaria(corPri1, corPri2);
+        System.out.println(corSec);
     }
     
-    public static String corSecundaria(String corP1, String corP2) {
-        String corS = "";
+    public static String corSecundaria(String corPri1, String corPri2) {
+        String corSec = "";
+        String strResultado = "A mistura das cores "+corPri1+" e "+corPri2+" resultam na cor: ";
+                
+        if (corPri1.toLowerCase().equals("vermelho") 
+         || corPri1.toLowerCase().equals("amarelo") 
+         || corPri1.toLowerCase().equals("azul")) {
+            
+            if (corPri2.toLowerCase().equals("vermelho")
+             || corPri2.toLowerCase().equals("amarelo")
+             || corPri2.toLowerCase().equals("azul")) {
+                
+                if (corPri1.toLowerCase().equals("vermelho") && corPri2.toLowerCase().equals("vermelho")) {
+                    strResultado = "A mistura mantêm-se na cor Vermelha";
+                } else if (corPri1.toLowerCase().equals("amarelo") && corPri2.toLowerCase().equals("amarelo")) {
+                    strResultado = "A mistura mantêm-se na cor Amarela";
+                } else if (corPri1.toLowerCase().equals("azul") && corPri2.toLowerCase().equals("azul")) {
+                    strResultado = "A mistura mantêm-se na cor Azul";
+                } else if (corPri1.toLowerCase().equals("vermelho") || corPri2.toLowerCase().equals("vermelho")) {
+                    if (corPri1.toLowerCase().equals("amarelo") || corPri2.toLowerCase().equals("amarelo")) {
+                        corSec = "Laranja";
+                    } else {
+                        corSec = "Violeta";
+                    }
+                } else if (corPri1.toLowerCase().equals("azul") || corPri2.toLowerCase().equals("azul")) {
+                   if (corPri1.toLowerCase().equals("amarelo") || corPri2.toLowerCase().equals("amarelo")) {
+                        corSec = "Verde";
+                    } else {
+                        corSec = "Violeta";
+                    }
+                }
+            } else {
+                strResultado = "Apenas cores Primárias são aceitas!";
+            }
+        } else {
+            strResultado = "Apenas cores Primárias são aceitas!";
+        }
         
-        
-        
-        return corS;
+        return strResultado+corSec;
     }
     
     public static void Exercicio16() {
