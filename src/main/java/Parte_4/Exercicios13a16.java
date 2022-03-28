@@ -329,42 +329,54 @@ public class Exercicios13a16 {
         int ano = ent.nextInt();
         
         String validaData[] = validaData(dia, mes, ano);
+        System.out.println(validaData[3]+"\n"+validaData[0]+"\n"+validaData[1]+"\n"+validaData[2]);
+        System.out.println("Data informada: "+dia+"/"+mes+"/"+ano);
     }
     
     public static String[] validaData(int dia, int mes, int ano) {
         String[] validaData = new String[4];
-        validaData[3] = "Data válida:";
+        validaData[3] = "Data válida, visto que: ";
         boolean dataInvalida = false;
         
         //Rever
         
-        if (dia >= 1 || dia <= 31) {
+        if (dia >= 1 && dia <= 31) {
             validaData[0] = "Dia válido.";
+        } else if (dia > 31) {
+            validaData[0] = "Dia inválido, O valor excede 31!";
+            dataInvalida = true;
         } else {
-            validaData[0] = "Dia inválido!";
+            validaData[0] = "Dia inválido, O valor é negativo!";
             dataInvalida = true;
         }
         
-        if (mes >= 1 || mes <= 12) {
+        if (mes >= 1 && mes <= 12) {
             if (mes == 2 && dia > 28) {
-                validaData[1] = "Mês inválido!";
+                validaData[1] = "Mês inválido, Fevereiro possui apenas 28 dias!";
                 dataInvalida = true;
+            } else {
+                validaData[1] = "Mês válido.";
             }
-            validaData[1] = "Mês válido";
+        } else if (mes > 12) {
+            validaData[1] = "Mês inválido, O valor excede 12!";
+            dataInvalida = true;
         } else {
-            validaData[1] = "Mês inválido!";
+            validaData[1] = "Mês inválido, O valor é negativo";
             dataInvalida = true;
         }
         
-        if (ano < 1 || ano > 9999) {
-            validaData[2] = "Ano válido";
+        if (ano >= 1 && ano <= 9999) {
+            validaData[2] = "Ano válido.";
+        } else if (ano > 9999) {          
+            validaData[2] = "Ano inválido, O valor excede 9999!";
+            dataInvalida = true;
         } else {
-            validaData[2] = "Ano inválido";
+            validaData[2] = "Ano inválido, O valor é negativo!";
             dataInvalida = true;
         }
         
         if (dataInvalida == true) {
-            validaData[3] = "Data inválida pois:";
+            validaData[3] = "\nData inválida pois:";
         }
         
         return validaData;
