@@ -248,8 +248,8 @@ public class Exercicios13a16 {
                 valTotal = valMeia * quantIngressosMeia;
             }
         } else if (tipoFilme == 0) {
-                quantIngressosMeia = quantIngressosMeia + quantIngressosInteira;
-                valTotal = valNacional * quantIngressosMeia;
+            quantIngressosMeia = quantIngressosMeia + quantIngressosInteira;
+            valTotal = valNacional * quantIngressosMeia;
         } else {
             inteiraTotal = valInteira * quantIngressosInteira;
             meiaTotal = valMeia * quantIngressosMeia;
