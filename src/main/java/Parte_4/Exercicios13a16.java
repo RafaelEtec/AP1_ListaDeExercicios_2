@@ -338,8 +338,6 @@ public class Exercicios13a16 {
         validaData[3] = "Data válida, visto que: ";
         boolean dataInvalida = false;
         
-        //Rever
-        
         if (dia >= 1 && dia <= 31) {
             validaData[0] = "Dia válido.";
         } else if (dia > 31) {
@@ -351,7 +349,9 @@ public class Exercicios13a16 {
         }
         
         if (mes >= 1 && mes <= 12) {
-            if (mes == 2 && dia > 28) {
+            if (dia == 29 && mes == 2 && ano%4 == 0) {
+                validaData[1] = "Mês válido, Fevereiro pode possuir 29 dias caso o ano seja bissexto.";
+            } else if (mes == 2 && dia > 28) {
                 validaData[1] = "Mês inválido, Fevereiro possui apenas 28 dias!";
                 dataInvalida = true;
             } else {
