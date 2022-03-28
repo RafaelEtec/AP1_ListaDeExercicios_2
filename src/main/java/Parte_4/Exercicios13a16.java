@@ -335,43 +335,52 @@ public class Exercicios13a16 {
     
     public static String[] validaData(int dia, int mes, int ano) {
         String[] validaData = new String[4];
+        String mesExtenso = nomeMesNum(mes);
         validaData[3] = "Data válida, visto que: ";
         boolean dataInvalida = false;
         
         if (dia >= 1 && dia <= 31) {
-            validaData[0] = "Dia válido.";
-        } else if (dia > 31) {
-            validaData[0] = "Dia inválido, O valor excede 31!";
-            dataInvalida = true;
-        } else {
-            validaData[0] = "Dia inválido, O valor é negativo!";
-            dataInvalida = true;
-        }
-        
-        if (mes >= 1 && mes <= 12) {
-            if (dia == 29 && mes == 2 && ano%4 == 0) {
-                validaData[1] = "Mês válido, Fevereiro pode possuir 29 dias caso o ano seja bissexto.";
-            } else if (mes == 2 && dia > 28) {
-                validaData[1] = "Mês inválido, Fevereiro possui apenas 28 dias!";
+            if (dia == 31 && mes%2 == 0) {
+                validaData[0] = dia+" - Dia inválido, O mês de "+mesExtenso+" não possui 31 dias!";
                 dataInvalida = true;
             } else {
-                validaData[1] = "Mês válido.";
+                validaData[0] = dia+" - Dia válido";
             }
-        } else if (mes > 12) {
-            validaData[1] = "Mês inválido, O valor excede 12!";
+        } else if (dia > 31) {
+            validaData[0] = dia+" - Dia inválido, O valor excede 31!";
             dataInvalida = true;
         } else {
-            validaData[1] = "Mês inválido, O valor é negativo";
+            validaData[0] = dia+" - Dia inválido, O valor é negativo!";
+            dataInvalida = true;
+        }
+        // mes%2 == 0 -> 30 dias
+        if (mes >= 1 && mes <= 12) {
+            if (dia == 29 && mes == 2 && ano%4 == 0) {
+                validaData[1] = mes+" - Mês válido, Fevereiro pode possuir 29 dias caso o ano seja bissexto.";
+            } else if (dia == 29 && mes == 2) {
+                validaData[1] =  mes+" - Mês inválido, Fevereiro somente possuirá 29 dias caso seja o ano seja bissexto.";
+                dataInvalida = true;
+            } else if (mes == 2 && dia > 28) {
+                validaData[1] = mes+" - Mês inválido, Fevereiro possui apenas 28 dias!";
+                dataInvalida = true;
+            } else {
+                validaData[1] = mes+" - Mês válido.";
+            }
+        } else if (mes > 12) {
+            validaData[1] = mes+" - Mês inválido, O valor excede 12!";
+            dataInvalida = true;
+        } else {
+            validaData[1] = mes+" - Mês inválido, O valor é negativo";
             dataInvalida = true;
         }
         
         if (ano >= 1 && ano <= 9999) {
-            validaData[2] = "Ano válido.";
+            validaData[2] = ano+" - Ano válido.";
         } else if (ano > 9999) {          
-            validaData[2] = "Ano inválido, O valor excede 9999!";
+            validaData[2] = ano+" - Ano inválido, O valor excede 9999!";
             dataInvalida = true;
         } else {
-            validaData[2] = "Ano inválido, O valor é negativo!";
+            validaData[2] = ano+" - Ano inválido, O valor é negativo!";
             dataInvalida = true;
         }
         
@@ -380,5 +389,50 @@ public class Exercicios13a16 {
         }
         
         return validaData;
+    }
+    
+    public static String nomeMesNum (int mes) {
+        String mesExtenso = "";
+        
+        switch (mes) {
+            case 1:
+                mesExtenso = "Janeiro";
+                break;
+            case 2:
+                mesExtenso = "Fevereiro";
+                break;
+            case 3:
+                mesExtenso = "Março";
+                break;
+            case 4:
+                mesExtenso = "Abril";
+                break;
+            case 5:
+                mesExtenso = "Maio";
+                break;
+            case 6:
+                mesExtenso = "Junho";
+                break;
+            case 7:
+                mesExtenso = "Julho";
+                break;
+            case 8:
+                mesExtenso = "Agosto";
+                break;
+            case 9:
+                mesExtenso = "Setembro";
+                break;
+            case 10:
+                mesExtenso = "Outubro";
+                break;
+            case 11:
+                mesExtenso = "Novembro";
+                break;
+            case 12:
+                mesExtenso = "Dezembro";
+                break;
+        }
+        
+        return mesExtenso;
     }
 }
