@@ -50,13 +50,16 @@ public class Exercicios1a5 {
     
     public static void Exercicio1() {
         Scanner ent = new Scanner(System.in);
-        
-        System.out.println("Insira o Primeiro Número: ");
-        double num1 = ent.nextDouble();
-        System.out.println("Insira o Segundo Número: ");
-        double num2 = ent.nextDouble();
-        double[] nums = maior2Nums(num1, num2);
-        System.out.println("O número "+nums[0]+" é maior que "+nums[1]);
+        try {
+            System.out.println("Insira o Primeiro Número: ");
+            double num1 = ent.nextDouble();
+            System.out.println("Insira o Segundo Número: ");
+            double num2 = ent.nextDouble();
+            double[] nums = maior2Nums(num1, num2);
+            System.out.println("O número "+nums[0]+" é maior que "+nums[1]);
+        } catch (Exception ex){
+            System.out.println("Letras não são permitidas!");
+        }
     }
     
     public static double[] maior2Nums(double num1, double num2) {
@@ -76,32 +79,40 @@ public class Exercicios1a5 {
     public static void Exercicio2() {
         Scanner ent = new Scanner(System.in);
         
-        System.out.println("Insira o Primeiro Número: ");
-        double num1 = ent.nextDouble();
-        System.out.println("Insira o Segundo Número: ");
-        double num2 = ent.nextDouble();
-        double[] nums = maior2Nums(num1, num2);
-        if (nums[0] == nums[1]) {
-            System.out.println("Os números são Iguais: "+nums[0]);
-        } else {
-            System.out.println("O número "+nums[0]+" é maior que "+nums[1]);
+        try {
+            System.out.println("Insira o Primeiro Número: ");
+            double num1 = ent.nextDouble();
+            System.out.println("Insira o Segundo Número: ");
+            double num2 = ent.nextDouble();
+            double[] nums = maior2Nums(num1, num2);
+            if (nums[0] == nums[1]) {
+                System.out.println("Os números são Iguais: "+nums[0]);
+            } else {
+                System.out.println("O número "+nums[0]+" é maior que "+nums[1]);
+            }
+        } catch (Exception ex){
+            System.out.println("Letras não são permitidas!");
         }
     }
     
     public static void Exercicio3() {
         Scanner ent = new Scanner(System.in);
         
-        System.out.println("Insira o Primeiro Número: ");
-        double num1 = ent.nextDouble();
-        System.out.println("Insira o Segundo Número: ");
-        double num2 = ent.nextDouble();
-        System.out.println("Insira o Terceiro Número: ");
-        double num3 = ent.nextDouble();
-        double[] nums = maior3Nums(num1, num2, num3);
-        if (nums[0] == nums[1] && nums[1] == nums[2]) {
-            System.out.println("Os números são iguais: "+nums[0]);
-        } else {
-            System.out.println("O número "+nums[0]+" é maior que "+nums[1]+" e "+nums[2]);
+        try {
+            System.out.println("Insira o Primeiro Número: ");
+            double num1 = ent.nextDouble();
+            System.out.println("Insira o Segundo Número: ");
+            double num2 = ent.nextDouble();
+            System.out.println("Insira o Terceiro Número: ");
+            double num3 = ent.nextDouble();
+            double[] nums = maior3Nums(num1, num2, num3);
+            if (nums[0] == nums[1] && nums[1] == nums[2]) {
+                System.out.println("Os números são iguais: "+nums[0]);
+            } else {
+                System.out.println("O número "+nums[0]+" é maior que "+nums[1]+" e "+nums[2]);
+            }
+        } catch (Exception ex){
+            System.out.println("Letras não são permitidas!");
         }
     }
     
@@ -144,10 +155,14 @@ public class Exercicios1a5 {
     public static void Exercicio4() {
         Scanner ent = new Scanner(System.in);
         
-        System.out.println("Qual a cor do farol agora?");
-        String corFarol = ent.next();
-        String retornoFarol = podeAtravessar(corFarol);
-        System.out.println(retornoFarol);
+        try { 
+            System.out.println("Qual a cor do farol agora?");
+            String corFarol = ent.next();
+            String retornoFarol = podeAtravessar(corFarol);
+            System.out.println(retornoFarol);
+        } catch (Exception ex){
+            System.out.println("Letras não são permitidas!");
+        }
     }
     
     public static String podeAtravessar(String corFarol) {
@@ -166,12 +181,16 @@ public class Exercicios1a5 {
     public static void Exercicio5() {
         Scanner ent = new Scanner(System.in);
         
-        System.out.println("Insira seus Ganhos: ");
-        double ganhos = ent.nextDouble();
-        System.out.println("Insira seus Gastos: ");
-        double gastos = ent.nextDouble();
-        String retorno = orcamentoGastoGanho(ganhos, gastos);
-        System.out.println(retorno);
+        try {
+            System.out.println("Insira seus Ganhos: ");
+            double ganhos = ent.nextDouble();
+            System.out.println("Insira seus Gastos: ");
+            double gastos = ent.nextDouble();
+            String retorno = orcamentoGastoGanho(ganhos, gastos);
+            System.out.println(retorno);
+        } catch (Exception ex){
+            System.out.println("Letras não são permitidas!");
+        }
     }
     
     public static String orcamentoGastoGanho (double ganhos, double gastos) {
