@@ -43,10 +43,14 @@ public class Exercicios6a9 {
     public static void Exercicio6() {
         Scanner ent = new Scanner(System.in);
         
-        System.out.println("Insira o número equivalente ao dia da Semana: ");
-        int dia = ent.nextInt();
-        String diaSemana = diaSemana(dia);
-        System.out.println(diaSemana);
+        try {
+            System.out.println("Insira o número equivalente ao dia da Semana: ");
+            int dia = ent.nextInt();
+            String diaSemana = diaSemana(dia);
+            System.out.println(diaSemana);
+        } catch (Exception ex){
+            System.out.println("Letras não são permitidas!");
+        }
     }
     
     public static String diaSemana(int dia) {
@@ -84,10 +88,14 @@ public class Exercicios6a9 {
     public static void Exercicio7() {
         Scanner ent = new Scanner(System.in);
         
-        System.out.println("Insira o número equivalente ao mês do ano: ");
-        int numMes = ent.nextInt();
-        String mes = mes(numMes);
-        System.out.println(mes);
+        try {
+            System.out.println("Insira o número equivalente ao mês do ano: ");
+            int numMes = ent.nextInt();
+            String mes = mes(numMes);
+            System.out.println(mes);
+        } catch (Exception ex){
+            System.out.println("Letras não são permitidas!");
+        }
     }
     
     public static String mes(int numMes) {
@@ -139,10 +147,14 @@ public class Exercicios6a9 {
     public static void Exercicio8() {
         Scanner ent = new Scanner(System.in);   
         
-        System.out.println("Insira o número equivalente ao mês do ano\nPara descobrir o semestre que habita: ");
-        int numMes = ent.nextInt();
-        String semestre = mesSemestre(numMes);
-        System.out.println(semestre);
+        try {
+            System.out.println("Insira o número equivalente ao mês do ano\nPara descobrir o semestre que habita: ");
+            int numMes = ent.nextInt();
+            String semestre = mesSemestre(numMes);
+            System.out.println(semestre);
+        } catch (Exception ex){
+            System.out.println("Letras não são permitidas!");
+        }
     }
     
     public static String mesSemestre(int numMes) {
@@ -163,20 +175,24 @@ public class Exercicios6a9 {
     public static void Exercicio9() {
         Scanner ent = new Scanner(System.in);
         
-        int escolhaJogador1;
-        System.out.println("--- Par ou Ímpar ---\n\nJogador 1 - Decida se quer Par <0> ou Ímpar <1>: ");
-        escolhaJogador1 = ent.nextInt();
-        while (escolhaJogador1 != 0 && escolhaJogador1 != 1) {
-            System.out.println("Escolha Par <0> ou Ímpar <1> novamente: ");
+        try {
+            int escolhaJogador1;
+            System.out.println("--- Par ou Ímpar ---\n\nJogador 1 - Decida se quer Par <0> ou Ímpar <1>: ");
             escolhaJogador1 = ent.nextInt();
+            while (escolhaJogador1 != 0 && escolhaJogador1 != 1) {
+                System.out.println("Escolha Par <0> ou Ímpar <1> novamente: ");
+                escolhaJogador1 = ent.nextInt();
+            }
+
+            System.out.println("Jogador 1 - Insira um número: ");
+            int num1 = ent.nextInt();
+            System.out.println("Jogador 2 - Insira um número: ");
+            int num2 = ent.nextInt();
+            String resultadoJogo = parOuImpar(num1, num2, escolhaJogador1);
+            System.out.println(resultadoJogo);
+        } catch (Exception ex){
+            System.out.println("Letras não são permitidas!");
         }
-        
-        System.out.println("Jogador 1 - Insira um número: ");
-        int num1 = ent.nextInt();
-        System.out.println("Jogador 2 - Insira um número: ");
-        int num2 = ent.nextInt();
-        String resultadoJogo = parOuImpar(num1, num2, escolhaJogador1);
-        System.out.println(resultadoJogo);
     }
     
     public static String parOuImpar(int num1, int num2, int escolhaJogador1) {
