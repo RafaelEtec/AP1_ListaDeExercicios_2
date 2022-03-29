@@ -54,12 +54,16 @@ public class Exercicios10a12 {
     public static void Exercicio10() {
         Scanner ent = new Scanner(System.in);
         
-        System.out.println("Insira seus Ganhos: ");
-        double ganhos = ent.nextDouble();
-        System.out.println("Insira seus Gastos: ");
-        double gastos = ent.nextDouble();
-        String orcamento = orcamentoPorcentagem(ganhos, gastos);
-        System.out.println(orcamento);
+        try {
+            System.out.println("Insira seus Ganhos: ");
+            double ganhos = ent.nextDouble();
+            System.out.println("Insira seus Gastos: ");
+            double gastos = ent.nextDouble();
+            String orcamento = orcamentoPorcentagem(ganhos, gastos);
+            System.out.println(orcamento);
+        } catch (Exception ex){
+            System.out.println("Letras não são permitidas!");
+        }
     }
     
     public static String orcamentoPorcentagem(double ganhos, double gastos) {
@@ -94,16 +98,20 @@ public class Exercicios10a12 {
     public static void Exercicio11() {
         Scanner ent = new Scanner(System.in);
         
-        System.out.println("Será pedido à você três valores\n"
-                + "Para que seja formado um triângulo, É necessário inserir três valores positivos\n"
-                + "Insira o valor do primeiro lado: ");
-        double lado1 = ent.nextDouble();
-        System.out.println("Insira o valor do segundo lado: ");
-        double lado2 = ent.nextDouble();
-        System.out.println("Insira o valor do terceiro lado: ");
-        double lado3 = ent.nextDouble();
-        
-        System.out.println(tipoTriangulo(lado1, lado2, lado3));
+        try {
+            System.out.println("Será pedido à você três valores\n"
+                    + "Para que seja formado um triângulo, É necessário inserir três valores positivos\n"
+                    + "Insira o valor do primeiro lado: ");
+            double lado1 = ent.nextDouble();
+            System.out.println("Insira o valor do segundo lado: ");
+            double lado2 = ent.nextDouble();
+            System.out.println("Insira o valor do terceiro lado: ");
+            double lado3 = ent.nextDouble();
+
+            System.out.println(tipoTriangulo(lado1, lado2, lado3));
+        } catch (Exception ex){
+            System.out.println("Letras não são permitidas!");
+        }
     }
     
     public static String tipoTriangulo(double lado1, double lado2, double lado3) {
@@ -138,46 +146,50 @@ public class Exercicios10a12 {
                     "- <E> Potência\n";
         boolean podeSair = false;
         
-        System.out.println("Insira o primeiro número: ");
-        double num1 = ent.nextDouble();
-        System.out.println("Insira o segundo número: ");
-        double num2 = ent.nextDouble();
-        System.out.println("Agora insira a Operação: ");
-        String operacao = ent.next();
-        
-        switch (operacao) {
-            case "a":
-                saidaOperacao = "Somando: "+num1+" + "+num2+" = ";
-                break;
-            case "b":
-                saidaOperacao = "Subtraindo: "+num1+" - "+num2+" = ";
-                break;
-            case "c":
-                saidaOperacao = "Multiplicando: "+num1+" * "+num2+" = ";
-                break;
-            case "d":
-                saidaOperacao = "Dividindo: "+num1+" / "+num2+" = ";
-                break;
-            case "e":
-                saidaOperacao = "Potenciando: "+num1+" ^ "+num2+" = ";
-                break;
-            case "s":
-                saidaOperacao =
-                        "Obrigado!" +
-                        "Saindo do programa.";
-                break;
-        } 
-        
-        do {   
-            if (operacao.toLowerCase().equals("s")) {
-                System.out.println(saidaOperacao);
-                podeSair = true;
-            } else {
-                double retorno = operacaoMat(num1, operacao, num2);
-                System.out.println(saidaOperacao+retorno);
-                podeSair = true;
-            }
-        } while (!podeSair);
+        try {
+            System.out.println("Insira o primeiro número: ");
+            double num1 = ent.nextDouble();
+            System.out.println("Insira o segundo número: ");
+            double num2 = ent.nextDouble();
+            System.out.println("Agora insira a Operação: ");
+            String operacao = ent.next();
+
+            switch (operacao) {
+                case "a":
+                    saidaOperacao = "Somando: "+num1+" + "+num2+" = ";
+                    break;
+                case "b":
+                    saidaOperacao = "Subtraindo: "+num1+" - "+num2+" = ";
+                    break;
+                case "c":
+                    saidaOperacao = "Multiplicando: "+num1+" * "+num2+" = ";
+                    break;
+                case "d":
+                    saidaOperacao = "Dividindo: "+num1+" / "+num2+" = ";
+                    break;
+                case "e":
+                    saidaOperacao = "Potenciando: "+num1+" ^ "+num2+" = ";
+                    break;
+                /**case "s":
+                    saidaOperacao =
+                            "Obrigado!" +
+                            "Saindo do programa.";
+                    break; **/
+            } 
+
+            do {   
+                //if (operacao.toLowerCase().equals("s")) {
+                //    System.out.println(saidaOperacao);
+                //    podeSair = true;
+                //} else {
+                    double retorno = operacaoMat(num1, operacao, num2);
+                    System.out.println(saidaOperacao+retorno);
+                    podeSair = true;
+                //}
+            } while (!podeSair);
+        } catch (Exception ex){
+            System.out.println("Letras não são permitidas!");
+        }
     }
     
     public static double operacaoMat(double num1, String operacao, double num2) {
