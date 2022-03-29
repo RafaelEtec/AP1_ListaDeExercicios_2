@@ -70,47 +70,51 @@ public class Exercicios13a16 {
                 + "<6> Sábado\n";
         String strDiaSemana = "";    
         double ingressosValTotal = 0;
-          
-        System.out.println(strSaidaDiaSemana);
-        int diaSemana = ent.nextInt();
         
-        while (diaSemana < 0 || diaSemana > 6) {
+        try {
             System.out.println(strSaidaDiaSemana);
-            diaSemana = ent.nextInt(); 
+            int diaSemana = ent.nextInt();
+
+            while (diaSemana < 0 || diaSemana > 6) {
+                System.out.println(strSaidaDiaSemana);
+                diaSemana = ent.nextInt(); 
+            }
+
+            switch (diaSemana) {
+                case 0:
+                    strDiaSemana = "Domingo";
+                    ingressosValTotal = ingressosValTotal(diaSemana);
+                    break;
+                case 1:
+                    strDiaSemana = "Segunda-Feira";
+                    ingressosValTotal = ingressosValTotal(diaSemana);
+                    break;
+                case 2:
+                    strDiaSemana = "Terça-Feira";
+                    ingressosValTotal = ingressosValTotal(diaSemana);
+                    break;
+                case 3:
+                    strDiaSemana = "Quarta-Feira";
+                    ingressosValTotal = ingressosValTotal(diaSemana);
+                    break;
+                case 4:
+                    strDiaSemana = "Quinta-Feira";
+                    ingressosValTotal = ingressosValTotal(diaSemana);
+                    break;
+                case 5:
+                    strDiaSemana = "Sexta-Feira";
+                    ingressosValTotal = ingressosValTotal(diaSemana);
+                    break;
+                case 6:
+                    strDiaSemana = "Sábado";
+                    ingressosValTotal = ingressosValTotal(diaSemana);
+                    break;
+            }     
+
+            System.out.println("Hoje é "+strDiaSemana+"\nVocê pagará: R$"+ingressosValTotal);
+        } catch (Exception ex){
+            System.out.println("Letras não são permitidas!");
         }
-        
-        switch (diaSemana) {
-            case 0:
-                strDiaSemana = "Domingo";
-                ingressosValTotal = ingressosValTotal(diaSemana);
-                break;
-            case 1:
-                strDiaSemana = "Segunda-Feira";
-                ingressosValTotal = ingressosValTotal(diaSemana);
-                break;
-            case 2:
-                strDiaSemana = "Terça-Feira";
-                ingressosValTotal = ingressosValTotal(diaSemana);
-                break;
-            case 3:
-                strDiaSemana = "Quarta-Feira";
-                ingressosValTotal = ingressosValTotal(diaSemana);
-                break;
-            case 4:
-                strDiaSemana = "Quinta-Feira";
-                ingressosValTotal = ingressosValTotal(diaSemana);
-                break;
-            case 5:
-                strDiaSemana = "Sexta-Feira";
-                ingressosValTotal = ingressosValTotal(diaSemana);
-                break;
-            case 6:
-                strDiaSemana = "Sábado";
-                ingressosValTotal = ingressosValTotal(diaSemana);
-                break;
-        }     
-        
-        System.out.println("Hoje é "+strDiaSemana+"\nVocê pagará: R$"+ingressosValTotal);
     }
     
     public static double ingressosValTotal(int diaSemana) {
@@ -123,25 +127,29 @@ public class Exercicios13a16 {
                 + "Às Quartas-feiras todos pagam Meia!\n";
         String strQuantIngressosInteira = "Quantidade de Ingressos de Inteira: ";
         String strQuantIngressosMeia = "Quantidade de Ingressos de Meia entrada: ";
-        double inteiraTotal, meiaTotal, valTotal;
+        double inteiraTotal, meiaTotal;
         double valInteira = 28.50;
         double valMeia = 14.25;
+        double valTotal = 0;
         
-        System.out.println(valorIngressos);
-        System.out.println(strQuantIngressosInteira);
-        int quantIngressosInteira = ent.nextInt();
-        System.out.println(strQuantIngressosMeia);
-        int quantIngressosMeia = ent.nextInt();
-        
-        if (diaSemana == 3) {
-            quantIngressosMeia = quantIngressosMeia + quantIngressosInteira;
-            valTotal = valMeia * quantIngressosMeia;
-        } else {
-            inteiraTotal = valInteira * quantIngressosInteira;
-            meiaTotal = valMeia * quantIngressosMeia;
-            valTotal = inteiraTotal + meiaTotal;
+        try {
+            System.out.println(valorIngressos);
+            System.out.println(strQuantIngressosInteira);
+            int quantIngressosInteira = ent.nextInt();
+            System.out.println(strQuantIngressosMeia);
+            int quantIngressosMeia = ent.nextInt();
+
+            if (diaSemana == 3) {
+                quantIngressosMeia = quantIngressosMeia + quantIngressosInteira;
+                valTotal = valMeia * quantIngressosMeia;
+            } else {
+                inteiraTotal = valInteira * quantIngressosInteira;
+                meiaTotal = valMeia * quantIngressosMeia;
+                valTotal = inteiraTotal + meiaTotal;
+            }
+        } catch (Exception ex){
+            System.out.println("Letras não são permitidas!");
         }
-        
         return valTotal;
     }
     
@@ -165,57 +173,61 @@ public class Exercicios13a16 {
                 + "<1> Internacional";
         String strTipoFilme = "Nacional";
         double ingressosValTotal = 0;
-          
-        System.out.println(strSaidaDiaSemana);
-        int diaSemana = ent.nextInt();  
-        while (diaSemana < 0 || diaSemana > 6) {
+        
+        try {
             System.out.println(strSaidaDiaSemana);
-            diaSemana = ent.nextInt(); 
-        }
-        
-        System.out.println(strSaidaTipoFilme);
-        int tipoFilme = ent.nextInt();
-        while (tipoFilme < 0 || tipoFilme > 1) {
+            int diaSemana = ent.nextInt();  
+            while (diaSemana < 0 || diaSemana > 6) {
+                System.out.println(strSaidaDiaSemana);
+                diaSemana = ent.nextInt(); 
+            }
+
             System.out.println(strSaidaTipoFilme);
-            tipoFilme = ent.nextInt();
+            int tipoFilme = ent.nextInt();
+            while (tipoFilme < 0 || tipoFilme > 1) {
+                System.out.println(strSaidaTipoFilme);
+                tipoFilme = ent.nextInt();
+            }
+
+            if (tipoFilme == 1) {
+                strTipoFilme = "Internacional";
+            }
+
+            switch (diaSemana) {
+                case 0:
+                    strDiaSemana = "Domingo";
+                    ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
+                    break;
+                case 1:
+                    strDiaSemana = "Segunda-Feira";
+                    ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
+                    break;
+                case 2:
+                    strDiaSemana = "Terça-Feira";
+                    ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
+                    break;
+                case 3:
+                    strDiaSemana = "Quarta-Feira";
+                    ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
+                    break;
+                case 4:
+                    strDiaSemana = "Quinta-Feira";
+                    ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
+                    break;
+                case 5:
+                    strDiaSemana = "Sexta-Feira";
+                    ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
+                    break;
+                case 6:
+                    strDiaSemana = "Sábado";
+                    ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
+                    break;
+            }     
+
+            System.out.println("Hoje é "+strDiaSemana+"\nO Filme é "+strTipoFilme+"\nVocê pagará: R$"+ingressosValTotal);
+        } catch (Exception ex){
+            System.out.println("Letras não são permitidas!");
         }
-        
-        if (tipoFilme == 1) {
-            strTipoFilme = "Internacional";
-        }
-        
-        switch (diaSemana) {
-            case 0:
-                strDiaSemana = "Domingo";
-                ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
-                break;
-            case 1:
-                strDiaSemana = "Segunda-Feira";
-                ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
-                break;
-            case 2:
-                strDiaSemana = "Terça-Feira";
-                ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
-                break;
-            case 3:
-                strDiaSemana = "Quarta-Feira";
-                ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
-                break;
-            case 4:
-                strDiaSemana = "Quinta-Feira";
-                ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
-                break;
-            case 5:
-                strDiaSemana = "Sexta-Feira";
-                ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
-                break;
-            case 6:
-                strDiaSemana = "Sábado";
-                ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
-                break;
-        }     
-        
-        System.out.println("Hoje é "+strDiaSemana+"\nO Filme é "+strTipoFilme+"\nVocê pagará: R$"+ingressosValTotal);
     }
     
     public static double ingressosValTotalTipo(int diaSemana, int tipoFilme) {
@@ -228,34 +240,38 @@ public class Exercicios13a16 {
                 + "Às Quartas-feiras todos pagam Meia!\n";
         String strQuantIngressosInteira = "Quantidade de Ingressos de Inteira: ";
         String strQuantIngressosMeia = "Quantidade de Ingressos de Meia entrada: ";
-        double inteiraTotal, meiaTotal, valTotal;
+        double inteiraTotal, meiaTotal;
         double valInteira = 28.50;
         double valMeia = 14.25;
         double valNacional = 5.00;
+        double valTotal = 0;
         
-        System.out.println(valorIngressos);
-        System.out.println(strQuantIngressosInteira);
-        int quantIngressosInteira = ent.nextInt();
-        System.out.println(strQuantIngressosMeia);
-        int quantIngressosMeia = ent.nextInt();
-        
-        if (diaSemana == 3) {
-            if (tipoFilme == 0) {
+        try {
+            System.out.println(valorIngressos);
+            System.out.println(strQuantIngressosInteira);
+            int quantIngressosInteira = ent.nextInt();
+            System.out.println(strQuantIngressosMeia);
+            int quantIngressosMeia = ent.nextInt();
+
+            if (diaSemana == 3) {
+                if (tipoFilme == 0) {
+                    quantIngressosMeia = quantIngressosMeia + quantIngressosInteira;
+                    valTotal = valNacional * quantIngressosMeia;
+                } else {
+                    quantIngressosMeia = quantIngressosMeia + quantIngressosInteira;
+                    valTotal = valMeia * quantIngressosMeia;
+                }
+            } else if (tipoFilme == 0) {
                 quantIngressosMeia = quantIngressosMeia + quantIngressosInteira;
                 valTotal = valNacional * quantIngressosMeia;
             } else {
-                quantIngressosMeia = quantIngressosMeia + quantIngressosInteira;
-                valTotal = valMeia * quantIngressosMeia;
+                inteiraTotal = valInteira * quantIngressosInteira;
+                meiaTotal = valMeia * quantIngressosMeia;
+                valTotal = inteiraTotal + meiaTotal;
             }
-        } else if (tipoFilme == 0) {
-            quantIngressosMeia = quantIngressosMeia + quantIngressosInteira;
-            valTotal = valNacional * quantIngressosMeia;
-        } else {
-            inteiraTotal = valInteira * quantIngressosInteira;
-            meiaTotal = valMeia * quantIngressosMeia;
-            valTotal = inteiraTotal + meiaTotal;
+        } catch (Exception ex){
+            System.out.println("Letras não são permitidas!");
         }
-        
         return valTotal;
     }
     
@@ -321,16 +337,20 @@ public class Exercicios13a16 {
     public static void Exercicio16() {
         Scanner ent = new Scanner(System.in);
         
-        System.out.println("Informe o dia: ");
-        int dia = ent.nextInt();
-        System.out.println("Informe o mês: ");
-        int mes = ent.nextInt();
-        System.out.println("Informe o ano: ");
-        int ano = ent.nextInt();
-        
-        String validaData[] = validaData(dia, mes, ano);
-        System.out.println(validaData[3]+"\n"+validaData[0]+"\n"+validaData[1]+"\n"+validaData[2]);
-        System.out.println("Data informada: "+dia+"/"+mes+"/"+ano);
+        try {
+            System.out.println("Informe o dia: ");
+            int dia = ent.nextInt();
+            System.out.println("Informe o mês: ");
+            int mes = ent.nextInt();
+            System.out.println("Informe o ano: ");
+            int ano = ent.nextInt();
+
+            String validaData[] = validaData(dia, mes, ano);
+            System.out.println(validaData[3]+"\n"+validaData[0]+"\n"+validaData[1]+"\n"+validaData[2]);
+            System.out.println("Data informada: "+dia+"/"+mes+"/"+ano);
+        } catch (Exception ex){
+            System.out.println("Letras não são permitidas!");
+        }
     }
     
     public static String[] validaData(int dia, int mes, int ano) {
