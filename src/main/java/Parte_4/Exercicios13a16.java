@@ -153,6 +153,7 @@ public class Exercicios13a16 {
         return valTotal;
     }
     
+    // Atualizando
     public static void Exercicio14() {
         Scanner ent = new Scanner(System.in);
         
@@ -274,6 +275,8 @@ public class Exercicios13a16 {
         }
         return valTotal;
     }
+    
+    // Atualizando
     
     public static void Exercicio15() {
         Scanner ent = new Scanner(System.in);
