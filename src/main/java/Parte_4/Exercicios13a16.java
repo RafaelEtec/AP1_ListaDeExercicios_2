@@ -153,6 +153,7 @@ public class Exercicios13a16 {
         return valTotal;
     }
     
+    // Atualizando
     public static void Exercicio14() {
         Scanner ent = new Scanner(System.in);
         
@@ -166,12 +167,9 @@ public class Exercicios13a16 {
                 + "<5> Sexta-Feira\n"
                 + "<6> Sábado\n";
         String strDiaSemana = "";
-        String strSaidaTipoFilme = 
-                  "O Filme é: \n"
-                + "<0> Nacional\n"
-                + "    ou: \n"
-                + "<1> Internacional";
-        String strTipoFilme = "Nacional";
+        String strFilmePais = 
+                  "De onde o Filme é?: \n";
+        
         double ingressosValTotal = 0;
         
         try {
@@ -182,45 +180,38 @@ public class Exercicios13a16 {
                 diaSemana = ent.nextInt(); 
             }
 
-            System.out.println(strSaidaTipoFilme);
-            int tipoFilme = ent.nextInt();
-            while (tipoFilme < 0 || tipoFilme > 1) {
-                System.out.println(strSaidaTipoFilme);
-                tipoFilme = ent.nextInt();
-            }
-
-            if (tipoFilme == 1) {
-                strTipoFilme = "Internacional";
-            }
-
+            System.out.println(strFilmePais);
+            String filmePais = ent.next();
+            String strTipoFilme = checaTipoFilme(filmePais);
+            
             switch (diaSemana) {
                 case 0:
                     strDiaSemana = "Domingo";
-                    ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
+                    ingressosValTotal = ingressosValTotalTipo(diaSemana, strTipoFilme);
                     break;
                 case 1:
                     strDiaSemana = "Segunda-Feira";
-                    ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
+                    ingressosValTotal = ingressosValTotalTipo(diaSemana, strTipoFilme);
                     break;
                 case 2:
                     strDiaSemana = "Terça-Feira";
-                    ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
+                    ingressosValTotal = ingressosValTotalTipo(diaSemana, strTipoFilme);
                     break;
                 case 3:
                     strDiaSemana = "Quarta-Feira";
-                    ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
+                    ingressosValTotal = ingressosValTotalTipo(diaSemana, strTipoFilme);
                     break;
                 case 4:
                     strDiaSemana = "Quinta-Feira";
-                    ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
+                    ingressosValTotal = ingressosValTotalTipo(diaSemana, strTipoFilme);
                     break;
                 case 5:
                     strDiaSemana = "Sexta-Feira";
-                    ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
+                    ingressosValTotal = ingressosValTotalTipo(diaSemana, strTipoFilme);
                     break;
                 case 6:
                     strDiaSemana = "Sábado";
-                    ingressosValTotal = ingressosValTotalTipo(diaSemana, tipoFilme);
+                    ingressosValTotal = ingressosValTotalTipo(diaSemana, strTipoFilme);
                     break;
             }     
 
@@ -230,7 +221,7 @@ public class Exercicios13a16 {
         }
     }
     
-    public static double ingressosValTotalTipo(int diaSemana, int tipoFilme) {
+    public static double ingressosValTotalTipo(int diaSemana, String strTipoFilme) {
         Scanner ent = new Scanner(System.in);
         
         String valorIngressos = 
@@ -254,14 +245,14 @@ public class Exercicios13a16 {
             int quantIngressosMeia = ent.nextInt();
 
             if (diaSemana == 3) {
-                if (tipoFilme == 0) {
+                if (strTipoFilme.toLowerCase().equals("nacional")) {
                     quantIngressosMeia = quantIngressosMeia + quantIngressosInteira;
                     valTotal = valNacional * quantIngressosMeia;
                 } else {
                     quantIngressosMeia = quantIngressosMeia + quantIngressosInteira;
                     valTotal = valMeia * quantIngressosMeia;
                 }
-            } else if (tipoFilme == 0) {
+            } else if (strTipoFilme.toLowerCase().equals("internacional")) {
                 quantIngressosMeia = quantIngressosMeia + quantIngressosInteira;
                 valTotal = valNacional * quantIngressosMeia;
             } else {
@@ -274,6 +265,17 @@ public class Exercicios13a16 {
         }
         return valTotal;
     }
+    
+    public static String checaTipoFilme(String filmePais) {
+        String strTipoFilme = "Internacional";
+        if (filmePais.toLowerCase().equals("brasil")) {
+            strTipoFilme = "Nacional";
+        }
+        
+        return strTipoFilme;
+    }
+    
+    // Atualizando
     
     public static void Exercicio15() {
         Scanner ent = new Scanner(System.in);
